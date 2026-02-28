@@ -1,6 +1,6 @@
 # React Custom Hooks Interview Prep (JavaScript)
 
-This repo implements and demonstrates 20 common custom hooks frequently asked in React interviews. Each hook has an interactive demo card and automated tests.
+This repo implements and demonstrates 25 common custom hooks frequently asked in React interviews. Each hook has an interactive demo card and automated tests.
 
 ## Hook List
 
@@ -8,48 +8,53 @@ Hooks are organized into five categories:
 
 ### State
 
-| #   | Hook                | Description                                     |
-| --- | ------------------- | ----------------------------------------------- |
-| 1   | `useCounter`        | Increment / decrement / reset a numeric counter |
-| 2   | `useToggle`         | Boolean toggle with a visual switch             |
-| 3   | `usePrevious`       | Track the previous value of a variable          |
-| 4   | `useLocalStorage`   | Persist state in `localStorage`                 |
-| 5   | `useSessionStorage` | Persist state in `sessionStorage`               |
-| 6   | `useIsFirstRender`  | Detect whether the current render is the first  |
+| #   | Hook                | Description                                      |
+| --- | ------------------- | ------------------------------------------------ |
+| 1   | `useCounter`        | Increment / decrement / reset a numeric counter  |
+| 2   | `useToggle`         | Boolean toggle with a visual switch              |
+| 3   | `usePrevious`       | Track the previous value of a variable           |
+| 4   | `useLocalStorage`   | Persist state in `localStorage`                  |
+| 5   | `useSessionStorage` | Persist state in `sessionStorage`                |
+| 6   | `useIsFirstRender`  | Detect whether the current render is the first   |
+| 7   | `useList`           | Manage array state with push / remove / clear    |
+| 8   | `useDefault`        | State with automatic fallback for null/undefined |
 
 ### Timing
 
 | #   | Hook          | Description                                 |
 | --- | ------------- | ------------------------------------------- |
-| 7   | `useDebounce` | Debounce a rapidly-changing value           |
-| 8   | `useThrottle` | Throttle a rapidly-changing value           |
-| 9   | `useInterval` | Declarative `setInterval` with pause/resume |
-| 10  | `useTimeout`  | Declarative `setTimeout` with restart       |
+| 9   | `useDebounce` | Debounce a rapidly-changing value           |
+| 10  | `useThrottle` | Throttle a rapidly-changing value           |
+| 11  | `useInterval` | Declarative `setInterval` with pause/resume |
+| 12  | `useTimeout`  | Declarative `setTimeout` with restart       |
 
 ### Data
 
 | #   | Hook       | Description                                     |
 | --- | ---------- | ----------------------------------------------- |
-| 11  | `useFetch` | Fetch JSON from a URL with loading/error states |
-| 12  | `useAsync` | Run any async function with status tracking     |
+| 13  | `useFetch` | Fetch JSON from a URL with loading/error states |
+| 14  | `useAsync` | Run any async function with status tracking     |
 
 ### DOM
 
 | #   | Hook                      | Description                                        |
 | --- | ------------------------- | -------------------------------------------------- |
-| 13  | `useOnClickOutside`       | Detect clicks outside a ref element                |
-| 14  | `useWindowSize`           | Track window `width` and `height`                  |
-| 15  | `useEventListener`        | Attach/detach DOM event listeners declaratively    |
-| 16  | `useMediaQuery`           | Reactive CSS media-query matching                  |
-| 17  | `useNetworkStatus`        | Online / offline status indicator                  |
-| 18  | `useIntersectionObserver` | Track element visibility via Intersection Observer |
+| 15  | `useOnClickOutside`       | Detect clicks outside a ref element                |
+| 16  | `useWindowSize`           | Track window `width` and `height`                  |
+| 17  | `useEventListener`        | Attach/detach DOM event listeners declaratively    |
+| 18  | `useMediaQuery`           | Reactive CSS media-query matching                  |
+| 19  | `useNetworkStatus`        | Online / offline status indicator                  |
+| 20  | `useIntersectionObserver` | Track element visibility via Intersection Observer |
+| 21  | `useDocumentTitle`        | Reactively set the document title                  |
+| 22  | `useHover`                | Track hover state on a ref element                 |
 
 ### Utility
 
 | #   | Hook                 | Description                              |
 | --- | -------------------- | ---------------------------------------- |
-| 19  | `useCopyToClipboard` | Copy text to the clipboard               |
-| 20  | `useWhyDidItUpdate`  | Log which props/state caused a re-render |
+| 23  | `useCopyToClipboard` | Copy text to the clipboard               |
+| 24  | `useWhyDidItUpdate`  | Log which props/state caused a re-render |
+| 25  | `useKeyPress`        | Detect when a specific key is pressed    |
 
 ## Project Structure
 
@@ -85,3 +90,13 @@ npm run test:watch    # watch mode
 ```
 
 This validates hook logic with unit-style tests powered by Vitest and Testing Library.
+
+## Contributing
+
+Contributions are welcome.
+
+1. Fork the repo and create a feature branch.
+2. Add or update a hook in `src/hooks/` and export it from `src/hooks/index.js`.
+3. Add or update the matching demo in `src/demos/` and a test in `src/hooks/__tests__/`.
+4. Run `npm run test` and make sure everything passes.
+5. Open a pull request with a short summary of the change.
