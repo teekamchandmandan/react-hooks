@@ -1,0 +1,404 @@
+/* ── Reset & Base ───────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background: #f0f2f5;
+  color: #1a1a2e;
+  line-height: 1.5;
+}
+
+/* ── App Shell ─────────────────────────────────────────── */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  padding: 2rem 2rem 1.5rem;
+  text-align: center;
+}
+
+.app-header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.app-header p {
+  margin: 0;
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+/* ── Category Filter Bar ───────────────────────────────── */
+.filter-bar {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  overflow-x: auto;
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.filter-btn {
+  padding: 0.4rem 1rem;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 999px;
+  background: #fff;
+  color: #475569;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.filter-btn:hover {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.filter-btn.active {
+  background: #667eea;
+  border-color: #667eea;
+  color: #fff;
+}
+
+.filter-btn .badge {
+  display: inline-block;
+  margin-left: 0.35rem;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 999px;
+  padding: 0 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.filter-btn.active .badge {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Grid Layout ───────────────────────────────────────── */
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.25rem;
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── Demo Card ─────────────────────────────────────────── */
+.demo-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.demo-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  background: #fafbfc;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+.card-tag {
+  font-size: 0.68rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tag-state {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+.tag-timing {
+  background: #fef3c7;
+  color: #92400e;
+}
+.tag-data {
+  background: #d1fae5;
+  color: #065f46;
+}
+.tag-dom {
+  background: #fce7f3;
+  color: #9d174d;
+}
+.tag-utility {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-body p {
+  margin: 0.25rem 0;
+  font-size: 0.88rem;
+  color: #475569;
+}
+
+.card-body input {
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  margin-bottom: 0.5rem;
+  transition: border-color 0.15s;
+  outline: none;
+  color: #1e293b;
+}
+
+.card-body input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+}
+
+.card-body input::placeholder {
+  color: #94a3b8;
+}
+
+/* ── Buttons ───────────────────────────────────────────── */
+.btn {
+  padding: 0.4rem 0.85rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn + .btn {
+  margin-left: 0.35rem;
+}
+
+.btn-primary {
+  background: #667eea;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #5a6fd6;
+}
+
+.btn-secondary {
+  background: #f1f5f9;
+  color: #475569;
+}
+.btn-secondary:hover {
+  background: #e2e8f0;
+}
+
+.btn-danger {
+  background: #fee2e2;
+  color: #dc2626;
+}
+.btn-danger:hover {
+  background: #fecaca;
+}
+
+.btn-group {
+  display: flex;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ── Status Indicators ─────────────────────────────────── */
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.4rem;
+}
+
+.status-online {
+  background: #22c55e;
+}
+.status-offline {
+  background: #ef4444;
+}
+
+.value-display {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #667eea;
+  margin: 0.25rem 0;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.15rem;
+}
+
+.pair {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.35rem;
+}
+
+.pair > div {
+  flex: 1;
+}
+
+/* ── Intersection Observer Box ─────────────────────────── */
+.observer-box {
+  height: 70px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: background 0.3s ease;
+}
+
+.observer-visible {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.observer-hidden {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ── Click Outside Box ─────────────────────────────────── */
+.popup-box {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background: #f8fafc;
+  border: 1.5px dashed #94a3b8;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #475569;
+  text-align: center;
+}
+
+/* ── Toggle Switch ─────────────────────────────────────── */
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.toggle-track {
+  width: 48px;
+  height: 26px;
+  border-radius: 999px;
+  position: relative;
+  transition: background 0.2s ease;
+}
+
+.toggle-track.on {
+  background: #667eea;
+}
+.toggle-track.off {
+  background: #cbd5e1;
+}
+
+.toggle-knob {
+  position: absolute;
+  top: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition: left 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.toggle-knob.on {
+  left: 25px;
+}
+.toggle-knob.off {
+  left: 3px;
+}
+
+.toggle-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ── Key Badge ─────────────────────────────────────────── */
+.key-badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  background: #1e293b;
+  color: #e2e8f0;
+  border-radius: 6px;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+  min-width: 2rem;
+  text-align: center;
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .demo-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .filter-bar {
+    padding: 0.75rem 1rem;
+  }
+
+  .app-header {
+    padding: 1.5rem 1rem 1rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.35rem;
+  }
+}
