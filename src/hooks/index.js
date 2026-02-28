@@ -18,3 +18,8 @@ export { useThrottle } from './useThrottle';
 export { useSessionStorage } from './useSessionStorage';
 export { useIntersectionObserver } from './useIntersectionObserver';
 export { useAsync } from './useAsync';
+export { useDocumentTitle } from './useDocumentTitle';
+export { useHover } from './useHover';
+export { useList } from './useList';
+export { useDefault } from './useDefault';
+export { useKeyPress } from './useKeyPress';
