@@ -14,6 +14,12 @@ import {
   useTimeout,
   useIsFirstRender,
   useNetworkStatus,
+  useEventListener,
+  useMediaQuery,
+  useThrottle,
+  useSessionStorage,
+  useIntersectionObserver,
+  useAsync,
 } from './hooks';
 
 function CounterDemo() {
@@ -260,6 +266,106 @@ function NetworkStatusDemo() {
   );
 }
 
+function EventListenerDemo() {
+  const [key, setKey] = useState('(none)');
+
+  useEventListener('keydown', (event) => {
+    setKey(event.key);
+  });
+
+  return (
+    <section>
+      <h2>useEventListener</h2>
+      <p>Last key pressed: {key}</p>
+    </section>
+  );
+}
+
+function MediaQueryDemo() {
+  const isWide = useMediaQuery('(min-width: 768px)');
+
+  return (
+    <section>
+      <h2>useMediaQuery</h2>
+      <p>Wide viewport: {isWide ? 'Yes' : 'No'}</p>
+    </section>
+  );
+}
+
+function ThrottleDemo() {
+  const [value, setValue] = useState('');
+  const throttled = useThrottle(value, 500);
+
+  return (
+    <section>
+      <h2>useThrottle</h2>
+      <input
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+        placeholder='Type fast'
+      />
+      <p>Immediate: {value}</p>
+      <p>Throttled (500ms): {throttled}</p>
+    </section>
+  );
+}
+
+function SessionStorageDemo() {
+  const [note, setNote] = useSessionStorage('interview-note', '');
+
+  return (
+    <section>
+      <h2>useSessionStorage</h2>
+      <input
+        value={note}
+        onChange={(event) => setNote(event.target.value)}
+        placeholder='Saved in sessionStorage'
+      />
+      <p>Persisted Note: {note || '(empty)'}</p>
+    </section>
+  );
+}
+
+function IntersectionObserverDemo() {
+  const boxRef = useRef(null);
+  const entry = useIntersectionObserver(boxRef, { threshold: 0.5 });
+
+  return (
+    <section>
+      <h2>useIntersectionObserver</h2>
+      <div
+        ref={boxRef}
+        style={{
+          height: 80,
+          background: entry?.isIntersecting ? '#c3e6cb' : '#f5c6cb',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        {entry?.isIntersecting ? 'Visible' : 'Not visible'}
+      </div>
+    </section>
+  );
+}
+
+function AsyncDemo() {
+  const fetchTodo = () =>
+    fetch('https://jsonplaceholder.typicode.com/todos/2').then((r) => r.json());
+
+  const { status, data, error, execute } = useAsync(fetchTodo, true);
+
+  return (
+    <section>
+      <h2>useAsync</h2>
+      {status === 'loading' && <p>Loading...</p>}
+      {status === 'error' && <p>Error: {error.message}</p>}
+      {status === 'success' && <p>Todo: {data.title}</p>}
+      <button onClick={execute}>Re-fetch</button>
+    </section>
+  );
+}
+
 export default function App() {
   return (
     <main style={{ padding: 16, fontFamily: 'sans-serif' }}>
@@ -279,6 +385,12 @@ export default function App() {
       <TimeoutDemo />
       <IsFirstRenderDemo />
       <NetworkStatusDemo />
+      <EventListenerDemo />
+      <MediaQueryDemo />
+      <ThrottleDemo />
+      <SessionStorageDemo />
+      <IntersectionObserverDemo />
+      <AsyncDemo />
     </main>
   );
 }

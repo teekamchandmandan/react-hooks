@@ -18,6 +18,12 @@ This repo is focused on implementing and practicing common custom hooks that are
 12. `useTimeout`
 13. `useIsFirstRender`
 14. `useNetworkStatus`
+15. `useEventListener`
+16. `useMediaQuery`
+17. `useThrottle`
+18. `useSessionStorage`
+19. `useIntersectionObserver`
+20. `useAsync`
 
 ## Project Structure
 
