@@ -9,3 +9,6 @@ export { useWindowSize } from './useWindowSize';
 export { useInterval } from './useInterval';
 export { useCopyToClipboard } from './useCopyToClipboard';
 export { useWhyDidItUpdate } from './useWhyDidItUpdate';
+export { useTimeout } from './useTimeout';
+export { useIsFirstRender } from './useIsFirstRender';
+export { useNetworkStatus } from './useNetworkStatus';

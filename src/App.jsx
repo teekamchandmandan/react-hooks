@@ -11,6 +11,9 @@ import {
   useToggle,
   useWhyDidItUpdate,
   useWindowSize,
+  useTimeout,
+  useIsFirstRender,
+  useNetworkStatus,
 } from './hooks';
 
 function CounterDemo() {
@@ -214,6 +217,49 @@ function WhyDidItUpdateDemo() {
   );
 }
 
+function TimeoutDemo() {
+  const [message, setMessage] = useState('Waiting...');
+
+  useTimeout(() => {
+    setMessage('Timeout completed');
+  }, 2000);
+
+  return (
+    <section>
+      <h2>useTimeout</h2>
+      <p>{message}</p>
+    </section>
+  );
+}
+
+function IsFirstRenderDemo() {
+  const [value, setValue] = useState('');
+  const isFirstRender = useIsFirstRender();
+
+  return (
+    <section>
+      <h2>useIsFirstRender</h2>
+      <input
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+        placeholder='Type to rerender'
+      />
+      <p>{isFirstRender ? 'First render' : 'Not first render'}</p>
+    </section>
+  );
+}
+
+function NetworkStatusDemo() {
+  const isOnline = useNetworkStatus();
+
+  return (
+    <section>
+      <h2>useNetworkStatus</h2>
+      <p>Status: {isOnline ? 'Online' : 'Offline'}</p>
+    </section>
+  );
+}
+
 export default function App() {
   return (
     <main style={{ padding: 16, fontFamily: 'sans-serif' }}>
@@ -230,6 +276,9 @@ export default function App() {
       <IntervalDemo />
       <ClipboardDemo />
       <WhyDidItUpdateDemo />
+      <TimeoutDemo />
+      <IsFirstRenderDemo />
+      <NetworkStatusDemo />
     </main>
   );
 }

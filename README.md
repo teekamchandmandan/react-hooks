@@ -15,6 +15,9 @@ This repo is focused on implementing and practicing common custom hooks that are
 9. `useInterval`
 10. `useCopyToClipboard`
 11. `useWhyDidItUpdate`
+12. `useTimeout`
+13. `useIsFirstRender`
+14. `useNetworkStatus`
 
 ## Project Structure
 
