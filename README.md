@@ -93,10 +93,4 @@ This validates hook logic with unit-style tests powered by Vitest and Testing Li
 
 ## Contributing
 
-Contributions are welcome.
-
-1. Fork the repo and create a feature branch.
-2. Add or update a hook in `src/hooks/` and export it from `src/hooks/index.js`.
-3. Add or update the matching demo in `src/demos/` and a test in `src/hooks/__tests__/`.
-4. Run `npm run test` and make sure everything passes.
-5. Open a pull request with a short summary of the change.
+Contributions are welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md) for the contributor checklist.
