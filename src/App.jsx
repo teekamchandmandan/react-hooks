@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   CounterDemo,
   ToggleDemo,
@@ -70,6 +70,24 @@ const DEMOS = [
 /* ── App ───────────────────────────────────────────────── */
 export default function App() {
   const [activeFilter, setActiveFilter] = useState('All');
+  const [dark, setDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return (
+        localStorage.getItem('theme') === 'dark' ||
+        (!localStorage.getItem('theme') &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      );
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      'data-theme',
+      dark ? 'dark' : 'light',
+    );
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  }, [dark]);
 
   const filtered =
     activeFilter === 'All'
@@ -81,11 +99,48 @@ export default function App() {
     return acc;
   }, {});
 
+  const categoryCount = Object.keys(counts).length;
+
   return (
     <div className='app'>
       <header className='app-header'>
-        <h1>React Custom Hooks</h1>
-        <p>25 interview-ready hook implementations — interactive demos</p>
+        <button
+          className='theme-toggle'
+          onClick={() => setDark((d) => !d)}
+          aria-label='Toggle theme'
+        >
+          {dark ? '☀️' : '🌙'}
+        </button>
+
+        <div className='header-content'>
+          <div className='header-badge'>
+            <span className='dot' />
+            Interactive Playground
+          </div>
+          <h1>
+            <span className='hook-bracket'>{'{ '}</span>
+            React Hooks
+            <span className='hook-bracket'>{' }'}</span>
+          </h1>
+          <p>
+            {DEMOS.length} interview-ready custom hook implementations with live
+            interactive demos
+          </p>
+          <div className='header-stats'>
+            <div className='stat'>
+              <span className='stat-number'>{DEMOS.length}</span>
+              <span className='stat-label'>Hooks</span>
+            </div>
+            <div className='stat'>
+              <span className='stat-number'>{categoryCount}</span>
+              <span className='stat-label'>Categories</span>
+            </div>
+            <div className='stat'>
+              <span className='stat-number'>100%</span>
+              <span className='stat-label'>Tested</span>
+            </div>
+          </div>
+        </div>
       </header>
 
       <nav className='filter-bar'>
@@ -108,6 +163,14 @@ export default function App() {
           <Component key={id} />
         ))}
       </main>
+
+      <footer className='app-footer'>
+        <p>
+          <span className='footer-hooks'>{DEMOS.length} hooks</span> across{' '}
+          {categoryCount} categories — fully tested & ready for interviews
+        </p>
+        <p>Built with React &amp; Vite</p>
+      </footer>
     </div>
   );
 }
