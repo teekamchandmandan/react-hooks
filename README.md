@@ -1,4 +1,4 @@
-# React Custom Hooks Interview Prep (JavaScript)
+# React Custom Hooks
 
 This repo implements and demonstrates 25 common custom hooks frequently asked in React interviews. Each hook has an interactive demo card and automated tests.
 
